@@ -14,13 +14,15 @@ def saveData(form):
     d.save()#django does not touch the database until you call the save method
 
 def check_if_exist(form):#checks if there alredy is someone with the same name
-    query = User_info.objects.values()
-    form = form.cleaned_data
-    names = [entry for entry in query]
     found = False
-    for name in names:
-        if form['name'] == name['name']:
-            found = True
+
+    if User_info.objects.exists():
+        query = User_info.objects.values()
+        form = form.cleaned_data
+        names = [entry for entry in query]
+        for name in names:
+            if form['name'] == name['name']:
+                found = True
     return found
 
 def take_info(request):#while im in this page this view generate an empty form to show if im not calling the post method
