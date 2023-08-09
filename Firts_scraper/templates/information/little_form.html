@@ -1,19 +1,15 @@
 {% extends 'base.html' %}
 {% block content %}
-{% for message in messages %}
+<div class="container">
 
 
-  {{ message }}
-
-{% endfor %}
+{% include 'Messages/message.html' %}
 
 {% load crispy_forms_tags %}
 <form action="/information/" method="post">
     {% csrf_token %}
-    <div class="container"> {{ form | crispy }}
+     {{ form | crispy }}
     <button type="submit" class="btn btn-success">Success</button>
-    </div>
-
-
 </form>
+ </div>
 {% endblock %}

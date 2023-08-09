@@ -34,7 +34,7 @@ def take_info(request):#while im in this page this view generate an empty form t
                 saveData(form)
                 return HttpResponseRedirect('../resume')#i redirect to the home page
             else:
-                messages.error(request,'seems that this name alredy gave some info')
+                messages.info(request,'seems that this name alredy gave some info')
     else:
         form = AgeForm()
     return render(request, 'information/little_form.html', {'form':form})

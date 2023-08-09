@@ -12,7 +12,9 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 
-from django.contrib import messages
+
+from django.contrib.messages import constants as messages
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -46,6 +48,13 @@ INSTALLED_APPS = [
 ]
 CRISPY_TEMPLATE_PACK = 'bootstrap5'
 
+MESSAGE_TAGS={ #associate every default django message type to a specific string then used as a class for bootstrap
+    messages.DEBUG: 'alert alert-secondary alert-dismissible fade show',
+    messages.INFO: 'alert alert-info alert-dismissible fade show',
+    messages.SUCCESS: 'alert alert-success alert-dismissible fade show', #alert-success
+    messages.WARNING: 'alert alert-warning alert-dismissible fade show',
+    messages.ERROR: 'alert alert-danger alert-dismissible fade show',
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -78,13 +87,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'Firts_scraper.wsgi.application'
 
-MESSAGE_TAGS = {
-        messages.DEBUG: 'alert-secondary',
-        messages.INFO: 'alert-info',
-        messages.SUCCESS: 'alert-success',
-        messages.WARNING: 'alert-warning',
-        messages.error: 'alert-danger',
- }
+
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
